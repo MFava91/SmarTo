@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>SmarTo</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="img/favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="img/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="img/favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="img/favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="img/favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#" />
+    <meta name="msapplication-TileImage" content="img/favicon/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="img/favicon/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="img/favicon/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="img/favicon/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="img/favicon/mstile-310x310.png" />
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#427AA1">
+
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+<div ng-controller="MainCtrl as mainCtrl" class="wrapper">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">
+                    <span><img id="logo" src="img/smarTo-logo.svg"></span> SmarTo <span style="font-size: 60%">v.0.1 Alpha</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div id="main-container" class="container light-grey">
+        <div class="jumbotron">
+            <div class="col-xs-6 col-sm-3 col-sm-offset-3 text-center">
+                <div class="col-xs-12 no-padding" ng-class="mainCtrl.lightTimer.minutes >= 10 ? 'margin-bottom-10' : 'margin-bottom-40'">
+                    <p>Light sensor</p>
+                    <img class="icon sensor-icon" src="img/light.svg">
+                    <p style="font-size: 60%" ng-bind="mainCtrl.status.lightSensor == 0 ? 'ON' : 'OFF'"></p>
+                    <p style="font-size: 90%; font-weight: bold" ng-if="mainCtrl.lightTimer.timerStarted && mainCtrl.lightTimer.minutes >= 10">
+                        {{ mainCtrl.lightTimer.hours > 0 ? mainCtrl.lightTimer.hours + ':' : '' }} 
+                        {{ mainCtrl.lightTimer.minutes < 10 ? '0' + mainCtrl.lightTimer.minutes : mainCtrl.lightTimer.minutes }} : 
+                        {{ mainCtrl.lightTimer.seconds < 10 ? '0' + mainCtrl.lightTimer.seconds : mainCtrl.lightTimer.seconds }}</p>
+                </div>
+                <div class="col-xs-12">
+                    <p>Motion sensor</p>
+                    <img class="icon sensor-icon" src="img/motion.svg">
+                    <p style="font-size: 60%" ng-bind="mainCtrl.status.motionSensor == 1 ? 'ON' : 'OFF'"></p>
+                    <p style="font-size: 90%; font-weight: bold" ng-if="mainCtrl.motionTimer.timerStarted && mainCtrl.lightTimer.minutes >= 10 && mainCtrl.motionTimer.minutes >= 5">
+                        {{ mainCtrl.motionTimer.hours > 0 ? mainCtrl.motionTimer.hours + ':' : '' }} 
+                        {{ mainCtrl.motionTimer.minutes < 10 ? '0' + mainCtrl.motionTimer.minutes : mainCtrl.motionTimer.minutes }} : 
+                        {{ mainCtrl.motionTimer.seconds < 10 ? '0' + mainCtrl.motionTimer.seconds : mainCtrl.motionTimer.seconds }}</p>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3 text-center">
+                <div class="col-xs-12 no-padding" ng-if="mainCtrl.status.lightSensor == 1">
+                    <img class="icon status-icon" ng-src="img/toilet.svg">
+                </div>
+                <div class="col-xs-12 no-padding" ng-if="mainCtrl.status.lightSensor == 0">
+                    <img  class="icon status-icon" ng-src="img/disturb.svg">
+                </div>
+                <div class="col-xs-12 no-padding" ng-if="mainCtrl.status.lightSensor == 1 && mainCtrl.lightTimer.timerStarted && mainCtrl.lightTimer.minutes >= 10 
+                    && mainCtrl.motionTimer.timerStarted && mainCtrl.motionTimer.minutes >= 5">
+                    <img  class="icon status-icon" ng-src="img/question.svg">
+                </div>
+                <p style="font-size: 74%" ng-if="mainCtrl.lightTimer.minutes < 10 || mainCtrl.motionTimer.minutes < 5" ng-bind="mainCtrl.status.lightSensor == 1 ? 'AVAILABLE' : 'OCCUPIED'"></p>
+                <p style="font-size: 74%" ng-if="mainCtrl.lightTimer.minutes >= 10 && mainCtrl.motionTimer.minutes >= 5">MAYBE AVAILABLE?!</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container text-center">
+            <p style="font-size: 90%">Made with <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> by Mattia Favaron</p>
+        </div>
+    </div>
+</div>
+
+
+<script src="libs/jquery/dist/jquery.js"></script>
+<script src="libs/angular/angular.min.js"></script>
+<script src="libs/angular/angular-animate.min.js"></script>
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="app.js"></script>
+<script src="controllers/MainCtrl.js"></script>
+<script src="services/MainService.js"></script>
+<script>
+    jQuery('img.icon').each(function() {
+        var $img = jQuery(this);
+        var imgID = $img.attr('id');
+        var imgClass = $img.attr('class');
+        var imgURL = $img.attr('src');
+        jQuery.get(imgURL, function(data) {
+        // Get the SVG tag, ignore the rest
+            var $svg = jQuery(data).find('svg');
+            // Add replaced image's ID to the new SVG
+            if(typeof imgID !== 'undefined') {
+                $svg = $svg.attr('id', imgID);
+            }
+            // Add replaced image's classes to the new SVG
+            if(typeof imgClass !== 'undefined') {
+                $svg = $svg.attr('class', imgClass+' replaced-svg');
+            }
+            // Remove any invalid XML tags as per http://validator.w3.org
+            $svg = $svg.removeAttr('xmlns:a');
+            // Replace image with new SVG
+            $img.replaceWith($svg);
+
+        }, 'xml');
+    });
+</script>
+<script>
+    $( document ).ready(function() {
+        $('#main-container').removeClass('light-grey');
+        $('#main-container').addClass('dark-grey');
+    });
+</script>
+</body>
+</html>

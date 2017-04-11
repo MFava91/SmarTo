@@ -1,0 +1,19 @@
+{
+  "name": "smartoilet",
+  "version": "0.0.1",
+  "description": "smart toilet",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "forever": "^0.15.3",
+    "morgan": "^1.8.1",
+    "onoff": "^1.1.2"
+  },
+  "devDependencies": {}
+}
