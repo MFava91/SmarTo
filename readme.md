@@ -1,6 +1,6 @@
 # SmarTo
 
-SmarTo is a web application built to make your office live easier. With SmarTo you can check the toilet availability from the comfort of your PC/SmartPhone.
+*SmarTo* is a web application built to make your office life *easier*. With *SmarTo* you can check the toilet availability from the comfort of your PC/SmartPhone.
 
 ![SmarTo home page](doc/SmarTo_home.jpg)
 
@@ -25,7 +25,7 @@ Connect sensors on yours Single-board computer.
 
 Example on Raspberry Model B+:
 
-|||
+| Wires color | Description |
 | --- | --- |
 | Grey | 5v |
 | White | Ground |
@@ -35,7 +35,7 @@ Example on Raspberry Model B+:
 
 After that you need to set the select GPIO on _server.js_.
 
-Example with Raspberry Model B+ and previews connection:
+Example with _Raspberry Model B+_ and previews connection:
 
 ```javascript
 // Set GPIO number
@@ -71,13 +71,13 @@ $ npm install
 
 ## Running SmarTo
 
-After the install process is over, you'll be able to run SmarTo:
+After the install process is over, you'll be able to run *SmarTo*:
 
 ```bash
 $ node server.js
 ```
 
-SmarTo will be running on port 80, just open your browser and visit _http://raspberry-ip_.
+*SmarTo* will be running on port 80, just open your browser and visit _http://raspberry-ip_.
 
 ### Forever.js
 
@@ -94,7 +94,7 @@ Then go to application root folder and run:
 $ forever start server.js
 ```
 
-Now SmarTo is running _forever_ on server port 80.
+Now *SmarTo* is running _forever_ on server port 80.
 
 
 ## Working on
