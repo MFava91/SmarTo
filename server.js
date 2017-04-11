@@ -3,6 +3,7 @@ var app = express();
 var morgan = require('morgan'); 
 var Gpio = require('onoff').Gpio;
 
+// Set GPIO number
 var motionSensor = new Gpio(6, 'in', 'both');
 var lightSensor = new Gpio(1,'in', 'both');
 
