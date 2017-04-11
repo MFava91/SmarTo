@@ -31,7 +31,7 @@ Example on Raspberry Model B+:
 | White | Ground |
 | Black | Signal |
 
-<img src="doc/SmarTo_diagram.svg"  width="490px" height="580px">
+<img src="doc/SmarTo_diagram.png"  width="490px" height="580px">
 
 After that you need to set the select GPIO on _server.js_.
 
