@@ -107,7 +107,7 @@ Now *SmarTo* is running _forever_ on server port 80.
 
 ## Something you have to know
 
-- This is a little project built and develop in a week. Many features are missing and the sensors can still be changed.
+- This is a little project built and develop in a week, in my free time after work. Many features are missing and the sensors can still be changed.
 - If you like this project, help is always welcome.
 
 ## ToDo
@@ -115,6 +115,7 @@ Now *SmarTo* is running _forever_ on server port 80.
 - [ ] Rewrite all with modern technologies (ES6, Angular 4, Bootstrap 4)
 - [ ] Collect and show statistical data (es: peak hours)
 - [ ] Toilet reservation (also with _amazon dash button_)
+- [ ] Android App
 
 ## Credits
 Icon made by [Freepik](http://www.flaticon.com/authors/freepik),  from [www.flaticon.com](www.flaticon.com )
