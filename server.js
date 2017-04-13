@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 
 app.get('/status', (req, res) => {
-  res.status(200).json(sensors.getSensorsStatus);
+  res.status(200).json(sensors.getSensorsStatus());
 });
 
 app.listen(80);
