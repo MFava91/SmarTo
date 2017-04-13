@@ -15,5 +15,7 @@
     "morgan": "^1.8.1",
     "onoff": "^1.1.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  }
 }

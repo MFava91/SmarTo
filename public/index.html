@@ -52,7 +52,7 @@
                 <div class="col-xs-12 no-padding" ng-class="mainCtrl.lightTimer.minutes >= 20 ? 'margin-bottom-10' : 'margin-bottom-40'">
                     <p>Light sensor</p>
                     <img class="icon sensor-icon" src="img/light.svg">
-                    <p style="font-size: 60%" ng-bind="mainCtrl.status.lightSensor == 0 ? 'ON' : 'OFF'"></p>
+                    <p style="font-size: 60%" ng-bind="mainCtrl.status.lightSensor.value == 0 ? 'ON' : 'OFF'"></p>
                     <p style="font-size: 90%; font-weight: bold" ng-if="mainCtrl.lightTimer.timerStarted && mainCtrl.lightTimer.minutes >= 20">
                         {{ mainCtrl.lightTimer.hours > 0 ? mainCtrl.lightTimer.hours + ':' : '' }} 
                         {{ mainCtrl.lightTimer.minutes < 10 ? '0' + mainCtrl.lightTimer.minutes : mainCtrl.lightTimer.minutes }} : 
@@ -61,7 +61,7 @@
                 <div class="col-xs-12">
                     <p>Motion sensor</p>
                     <img class="icon sensor-icon" src="img/motion.svg">
-                    <p style="font-size: 60%" ng-bind="mainCtrl.status.motionSensor == 1 ? 'ON' : 'OFF'"></p>
+                    <p style="font-size: 60%" ng-bind="mainCtrl.status.motionSensor.value == 1 ? 'ON' : 'OFF'"></p>
                     <p style="font-size: 90%; font-weight: bold" ng-if="mainCtrl.motionTimer.timerStarted && mainCtrl.lightTimer.minutes >= 20 && mainCtrl.motionTimer.minutes >= 2">
                         {{ mainCtrl.motionTimer.hours > 0 ? mainCtrl.motionTimer.hours + ':' : '' }} 
                         {{ mainCtrl.motionTimer.minutes < 10 ? '0' + mainCtrl.motionTimer.minutes : mainCtrl.motionTimer.minutes }} : 
@@ -69,17 +69,17 @@
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3 text-center">
-                <div class="col-xs-12 no-padding" ng-if="mainCtrl.status.lightSensor == 1">
+                <div class="col-xs-12 no-padding" ng-if="mainCtrl.status.lightSensor.value == 1">
                     <img class="icon status-icon" ng-src="img/toilet.svg">
                 </div>
-                <div class="col-xs-12 no-padding" ng-if="mainCtrl.status.lightSensor == 0">
+                <div class="col-xs-12 no-padding" ng-if="mainCtrl.status.lightSensor.value == 0">
                     <img  class="icon status-icon" ng-src="img/disturb.svg">
                 </div>
-                <div class="col-xs-12 no-padding" ng-if="mainCtrl.status.lightSensor == 1 && mainCtrl.lightTimer.timerStarted && mainCtrl.lightTimer.minutes >= 10 
+                <div class="col-xs-12 no-padding" ng-if="mainCtrl.status.lightSensor.value == 1 && mainCtrl.lightTimer.timerStarted && mainCtrl.lightTimer.minutes >= 10 
                     && mainCtrl.motionTimer.timerStarted && mainCtrl.motionTimer.minutes >= 2">
                     <img  class="icon status-icon" ng-src="img/question.svg">
                 </div>
-                <p style="font-size: 74%" ng-if="mainCtrl.lightTimer.minutes < 10 || mainCtrl.motionTimer.minutes < 5" ng-bind="mainCtrl.status.lightSensor == 1 ? 'AVAILABLE' : 'OCCUPIED'"></p>
+                <p style="font-size: 74%" ng-if="mainCtrl.lightTimer.minutes < 10 || mainCtrl.motionTimer.minutes < 5" ng-bind="mainCtrl.status.lightSensor.value == 1 ? 'AVAILABLE' : 'OCCUPIED'"></p>
                 <p style="font-size: 74%" ng-if="mainCtrl.lightTimer.minutes >= 10 && mainCtrl.motionTimer.minutes >= 5">MAYBE AVAILABLE?!</p>
             </div>
         </div>
