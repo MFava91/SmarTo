@@ -63,7 +63,6 @@
 
         function getStatus() {
             MainService.getStatus().then(function (status) {
-                console.log(status);
                 mainCtrl.status = status;
                 
                 if(mainCtrl.status.lightSensor.value === 0) {
