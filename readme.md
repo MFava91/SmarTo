@@ -11,7 +11,7 @@ In fact, if after 10 minutes the light still on and there are no movement inside
 
 ## What it is made of
 
-### Hardaware
+### Hardware
 
 - Single-board computer (es: Raspberry Pi/OrangePi)
 - Battery pack
