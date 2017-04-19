@@ -27,14 +27,10 @@ setInterval(() => {
 
 const updateSensorStatus = (sensor, sensorName, onStatus) => {
   sensor.read((err, value) => {
-    status[sensorName].value = value;
-    if (value === onStatus) {
-      status[sensorName].timeOn += 3;
-      status[sensorName].timeOff = 0;
-    } else {
-      status[sensorName].timeOn = 0; 
-      status[sensorName].timeOff += 3; 
-    }
+    const eq = value === onStatus;
+    status[sensorName].value   = value;
+    status[sensorName].timeOn  = 0 + ((+ eq) * (status[sensorName].timeOn  + 3));
+    status[sensorName].timeOff = 0 + ((+!eq) * (status[sensorName].timeOff + 3));
   });
 };
 
