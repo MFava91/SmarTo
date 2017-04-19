@@ -20,17 +20,19 @@ const status = {
   motionSensor: Object.assign({}, defaultStatus)
 };
 
-setInterval(() => {
-  updateSensorStatus(lightSensor, 'lightSensor', 0);
-  updateSensorStatus(motionSensor, 'motionSensor', 1);
-}, 3000);
+const init = () => {
+  return setInterval(() => {
+    updateSensorStatus(lightSensor, status.lightSensor, 0);
+    updateSensorStatus(motionSensor, status.motionSensor, 1);
+  }, 3000);
+};
 
-const updateSensorStatus = (sensor, sensorName, onStatus) => {
+const updateSensorStatus = (sensor, statusObj, onStatus) => {
   sensor.read((err, value) => {
     const eq = value === onStatus;
-    status[sensorName].value   = value;
-    status[sensorName].timeOn  = 0 + ((+ eq) * (status[sensorName].timeOn  + 3));
-    status[sensorName].timeOff = 0 + ((+!eq) * (status[sensorName].timeOff + 3));
+    statusObj.value   = value;
+    statusObj.timeOn  = 0 + ((+ eq) * (statusObj.timeOn  + 3));
+    statusObj.timeOff = 0 + ((+!eq) * (statusObj.timeOff + 3));
   });
 };
 
@@ -39,6 +41,7 @@ const getSensorsStatus = () => {
 };
 
 module.exports = {
+  init: init,
   updateSensorStatus: updateSensorStatus,
   getSensorsStatus: getSensorsStatus
 };
