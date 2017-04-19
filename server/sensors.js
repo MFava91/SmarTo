@@ -12,6 +12,7 @@ const lightSensor = new Gpio(1, 'in', 'both');
 process.on('SIGINT', () => {
   lightSensor.unexport();
   motionSensor.unexport();
+  process.exit();
 });
 
 const defaultStatus = {
