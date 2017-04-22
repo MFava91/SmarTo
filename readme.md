@@ -5,7 +5,7 @@
 ![SmarTo home page](doc/SmarTo_home.jpg)
 
 We installed it in a bathroom with no windows, so the light sensor makes the bulk of the work. The motion sensor comes in handy when someone forgets to turn off the light. 
-In fact, if after 10 minutes the light still on and there are no movement inside, SmarTo notifies than maybe the toilet is available.
+In fact, if the light has been on but there have been no movements inside for the past 10 minutes, SmarTo will notify that the toilet may be available.
 
 ![SmarTo hardware](doc/SmarTo.jpg)
 
@@ -66,10 +66,10 @@ Make sure you have installed all of the following prerequisites on your machine.
 To install SmarTo's dependencies you are going to use npm. In the application root folder run this in the command-line:
 
 ```bash
-$ npm install
+$ npm install --production
 ```
 
-## Running SmarTo
+## Running SmarTo 
 
 After the install process is over, you'll be able to run *SmarTo*:
 
@@ -104,6 +104,37 @@ Now *SmarTo* is running _forever_ on server port 80.
 | Raspberry Pi 1 Model B+ | Raspian | NO |
 | OrangePi Lite | Armbian | YES |
 
+
+## Local development and tests
+
+To include development dependencies in the installation procedure, run this command from the application root folder:
+
+```bash
+$ npm install
+```
+
+After the install process is over, you'll be able to run *SmarTo* locally adding the _NODE_ENV_ environment variable:
+(Note: example below only works for UNIX systems)
+
+```bash
+$ NODE_ENV=development node server.js
+```
+
+*SmarTo* will be running locally on the port specified in the _server.js_ file.
+
+To run tests for the server part of the application, run this command: 
+
+```bash
+$ npm run test-server
+```
+
+To run tests and generate the coverage for the server part application, run this command:
+
+```bash
+$ npm run coverage-server
+``` 
+
+The coverage files will be generated in the _coverage/_ folder, in the root folder of the project.
 
 ## Something you have to know
 
