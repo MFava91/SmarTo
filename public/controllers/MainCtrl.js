@@ -22,10 +22,16 @@
 
         //---- variable ---------
         mainCtrl.status = {
-            lightSensor: 1,
-            timeLightSensorIsOn: 0,
-            motionSensor: 0,
-            timeMotionSensorIsOff: 0,
+            lightSensor: {
+                value: 0,
+                timeOn: 0,
+                timeOff: 0
+            },
+            motionSensor: {
+                value: 0,
+                timeOn: 0,
+                timeOff: 0
+            }
         };
 
         mainCtrl.lightTimer = {
@@ -59,11 +65,11 @@
             MainService.getStatus().then(function (status) {
                 mainCtrl.status = status;
                 
-                if(mainCtrl.status.lightSensor == 0) {
+                if(mainCtrl.status.lightSensor.value === 0) {
                     $('#light_icon').css('fill', '#FFD166');
                     if(!mainCtrl.lightTimer.timerStarted) {
                         mainCtrl.lightTimer.timerStarted = true;
-                        mainCtrl.lightTimer.time = angular.copy(status.timeLightSensorIsOn);
+                        mainCtrl.lightTimer.time = angular.copy(status.lightSensor.timeOn);
                     }
 
                 } else {
@@ -72,7 +78,7 @@
                     mainCtrl.lightTimer.time = 0;
                 }
                 
-                if(mainCtrl.status.motionSensor == 1) {
+                if(mainCtrl.status.motionSensor.value === 1) {
                     $('#motion_icon').css('fill', '#EF476F');
                     mainCtrl.motionTimer.timerStarted = false;
                     mainCtrl.motionTimer.time = 0;
@@ -80,7 +86,7 @@
                     $('#motion_icon').css('fill', '#363732');
                     if(!mainCtrl.motionTimer.timerStarted) {
                         mainCtrl.motionTimer.timerStarted = true;
-                        mainCtrl.motionTimer.time = angular.copy(status.timeMotionSensorIsOff);
+                        mainCtrl.motionTimer.time = angular.copy(status.motionSensor.timeOff);
                     }
                 }
             });

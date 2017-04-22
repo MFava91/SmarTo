@@ -1,5 +1,6 @@
 # Dependency directory
 node_modules
+coverage
 
 # Other
 .DS_Store
