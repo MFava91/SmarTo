@@ -5,16 +5,16 @@
 ![SmarTo home page](doc/SmarTo_home.jpg)
 
 We installed it in a bathroom with no windows, so the light sensor makes the bulk of the work. The motion sensor comes in handy when someone forgets to turn off the light. 
-In fact, if after 10 minutes the light still on and there are no movement inside, SmarTo notifies than maybe the toilet is available.
+In fact, if the light has been on but there have been no movements within the past 10 minutes, SmarTo will notify that the toilet may be available.
 
 ![SmarTo hardware](doc/SmarTo.jpg)
 
 ## What it is made of
 
-### Hardaware
+### Hardware
 
 - Single-board computer (es: Raspberry Pi/OrangePi)
-- Battery pack
+- Battery pack (optional)
 - Photosensitive resistance sensor module
 - HC-SR501 Pir Motion Detector - [Doc](https://www.mpja.com/download/31227sc.pdf)
 - Jumper Wires x 6
@@ -33,9 +33,9 @@ Example on Raspberry Model B+:
 
 <img src="doc/SmarTo_diagram.png"  width="524px" height="800px">
 
-After that you need to set the select GPIO on _server.js_.
+After that you need to set the selected GPIO in the _server.js_ file.
 
-Example with _Raspberry Model B+_ and previews connection:
+Example with _Raspberry Model B+_ and connections preview:
 
 ```javascript
 // Set GPIO number
@@ -66,10 +66,10 @@ Make sure you have installed all of the following prerequisites on your machine.
 To install SmarTo's dependencies you are going to use npm. In the application root folder run this in the command-line:
 
 ```bash
-$ npm install
+$ npm install --production
 ```
 
-## Running SmarTo
+## Running SmarTo 
 
 After the install process is over, you'll be able to run *SmarTo*:
 
@@ -101,9 +101,52 @@ Now *SmarTo* is running _forever_ on server port 80.
 
 | Board | OS | Tested |
 | --- | --- | --- |
-| Raspberry Pi 1 Model B+ | Raspian | NO |
+| Raspberry Pi 1 Model B+ | Raspbian | NO |
+| Raspberry Pi 3 Model B | Raspbian | YES |
 | OrangePi Lite | Armbian | YES |
 
+
+## Local development and tests
+
+To include development dependencies in the installation procedure, run this command from the application root folder:
+
+```bash
+$ npm install
+```
+
+After the installation process is over, you'll be able to run *SmarTo* locally by adding the _NODE_ENV_ environment variable:
+(Note: example below only works for UNIX systems)
+
+```bash
+$ NODE_ENV=development node server.js
+```
+
+*SmarTo* will be running locally on the port specified in the _server.js_ file.
+
+While running locally, the sensor value reads will be mocked since the GPIO library is compiled only for ARM architectures. You can change the value returned from the read function of the mocked sensors by editing the value in these lines of code in the _server/sensors.js_ file:
+
+```javascript
+const Gpio = process.env.NODE_ENV === 'development' ? 
+  function Gpio() {
+    this.read = (cb) => cb(null, 0); // <--- your value here (0 or 1)
+    this.unexport = () => {};
+  } :
+  require('onoff').Gpio;
+  ```
+
+To run tests for the server part of the application, run this command: 
+
+```bash
+$ npm run test-server
+```
+
+To run tests and generate the coverage for the server part application, run this command:
+
+```bash
+$ npm run coverage-server
+```
+
+The coverage files will be generated in the _coverage/_ folder, in the root folder of the project.
 
 ## Something you have to know
 

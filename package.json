@@ -1,11 +1,13 @@
 {
   "name": "smartoilet",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "smart toilet",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test-server": "mocha './tests/server/**/*.js' --recursive --check-leaks --reporter min --timeout 60000",
+    "coverage-server": "istanbul cover ./node_modules/mocha/bin/_mocha -- 'tests/server/**/*.js' --timeout 60000"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +17,11 @@
     "morgan": "^1.8.1",
     "onoff": "^1.1.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "proxyquire": "^1.7.11"
+  }
 }
