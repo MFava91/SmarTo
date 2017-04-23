@@ -9,4 +9,4 @@ addons:
     - g++-4.8
 env:
   CXX=g++-4.8
-script: npm run test-server
+script: npm run coverage-server
