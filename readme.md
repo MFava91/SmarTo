@@ -1,4 +1,6 @@
-# SmarTo
+# SmarTo  
+
+[![Build Status](https://travis-ci.org/MFava91/SmarTo.svg?branch=master)](https://travis-ci.org/MFava91/SmarTo) [![Coverage Status](https://coveralls.io/repos/github/MFava91/SmarTo/badge.svg)](https://coveralls.io/github/MFava91/SmarTo)
 
 *SmarTo* is a web application built to make your office life *easier*. With *SmarTo* you can check the toilet availability from the comfort of your PC/SmartPhone.
 
