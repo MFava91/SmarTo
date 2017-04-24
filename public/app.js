@@ -1,5 +1,5 @@
 'use strict';
 
 angular
-    .module('app', ['ngAnimate'])
+    .module('app', ['ngAnimate', 'cfp.hotkeys'])
     .run(function () {});

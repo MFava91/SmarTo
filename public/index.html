@@ -34,6 +34,7 @@
 
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/input.css">
 </head>
 <body>
 <div ng-controller="MainCtrl as mainCtrl" class="wrapper">
@@ -50,7 +51,7 @@
         <div class="jumbotron">
             <div class="col-xs-6 col-sm-3 col-sm-offset-3 text-center">
                 <div class="col-xs-12 no-padding" ng-class="mainCtrl.lightTimer.minutes >= 20 ? 'margin-bottom-10' : 'margin-bottom-40'">
-                    <p>Light sensor</p>
+                    <p>LIGHT SENSOR</p>
                     <img class="icon sensor-icon" src="img/light.svg">
                     <p style="font-size: 60%" ng-bind="mainCtrl.status.lightSensor.value == 0 ? 'ON' : 'OFF'"></p>
                     <p style="font-size: 90%; font-weight: bold" ng-if="mainCtrl.lightTimer.timerStarted && mainCtrl.lightTimer.minutes >= 20">
@@ -59,7 +60,7 @@
                         {{ mainCtrl.lightTimer.seconds < 10 ? '0' + mainCtrl.lightTimer.seconds : mainCtrl.lightTimer.seconds }}</p>
                 </div>
                 <div class="col-xs-12">
-                    <p>Motion sensor</p>
+                    <p>MOTION SENSOR</p>
                     <img class="icon sensor-icon" src="img/motion.svg">
                     <p style="font-size: 60%" ng-bind="mainCtrl.status.motionSensor.value == 1 ? 'ON' : 'OFF'"></p>
                     <p style="font-size: 90%; font-weight: bold" ng-if="mainCtrl.motionTimer.timerStarted && mainCtrl.lightTimer.minutes >= 20 && mainCtrl.motionTimer.minutes >= 2">
@@ -72,15 +73,30 @@
                 <div class="col-xs-12 no-padding" ng-if="mainCtrl.status.lightSensor.value == 1">
                     <img class="icon status-icon" ng-src="img/toilet.svg">
                 </div>
-                <div class="col-xs-12 no-padding" ng-if="mainCtrl.status.lightSensor.value == 0">
+                <div class="col-xs-12 no-padding" ng-if="mainCtrl.status.lightSensor.value == 0 && mainCtrl.lightTimer.timerStarted && mainCtrl.lightTimer.minutes < 20 
+                    && mainCtrl.motionTimer.timerStarted && mainCtrl.motionTimer.minutes < 2">
                     <img  class="icon status-icon" ng-src="img/disturb.svg">
                 </div>
-                <div class="col-xs-12 no-padding" ng-if="mainCtrl.status.lightSensor.value == 1 && mainCtrl.lightTimer.timerStarted && mainCtrl.lightTimer.minutes >= 10 
+                <div class="col-xs-12 no-padding" ng-if="mainCtrl.status.lightSensor.value == 0 && mainCtrl.lightTimer.timerStarted && mainCtrl.lightTimer.minutes >= 20 
                     && mainCtrl.motionTimer.timerStarted && mainCtrl.motionTimer.minutes >= 2">
                     <img  class="icon status-icon" ng-src="img/question.svg">
                 </div>
-                <p style="font-size: 74%" ng-if="mainCtrl.lightTimer.minutes < 10 || mainCtrl.motionTimer.minutes < 5" ng-bind="mainCtrl.status.lightSensor.value == 1 ? 'AVAILABLE' : 'OCCUPIED'"></p>
-                <p style="font-size: 74%" ng-if="mainCtrl.lightTimer.minutes >= 10 && mainCtrl.motionTimer.minutes >= 5">MAYBE AVAILABLE?!</p>
+                <p style="font-size: 74%" ng-if="mainCtrl.lightTimer.minutes < 20 || mainCtrl.motionTimer.minutes < 2" ng-bind="mainCtrl.status.lightSensor.value == 1 ? 'AVAILABLE' : 'OCCUPIED'"></p>
+                <p style="font-size: 74%" ng-if="mainCtrl.lightTimer.minutes >= 20 && mainCtrl.motionTimer.minutes >= 2">MAYBE AVAILABLE?!</p>
+            </div>
+            <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4" style="text-align: center; min-height: 20px"  ng-class="mainCtrl.nameOfTheBooking !== '' ? 'booked-ani-in' : 'booked-ani-out'">
+                <div>
+                    <b style="font-size: 14px">BOOKED BY</b>
+                </div>
+                {{mainCtrl.nameOfTheBooking}}
+            </div>
+            <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4" ng-class="mainCtrl.nameOfTheBooking !== '' ? 'booked-ani-out' : 'booked-ani-in'">
+                <span class="input input--jiro">
+					<input class="input__field input__field--jiro" type="text" id="input-10" ng-model="mainCtrl.nameChosenForBooking"/>
+					<label class="input__label input__label--jiro" for="input-10">
+						<span class="input__label-content input__label-content--jiro">Booking here!</span>
+					</label>
+				</span>
             </div>
         </div>
     </div>
@@ -96,10 +112,11 @@
 <script src="libs/angular/angular.min.js"></script>
 <script src="libs/angular/angular-animate.min.js"></script>
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/angular-hotkeys/hotkeys.min.js"></script>
 
 <script src="app.js"></script>
-<script src="controllers/MainCtrl.js"></script>
-<script src="services/MainService.js"></script>
+<script src="js/controllers/MainCtrl.js"></script>
+<script src="js/services/MainService.js"></script>
 <script>
     jQuery('img.icon').each(function() {
         var $img = jQuery(this);

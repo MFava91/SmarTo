@@ -11,14 +11,27 @@
         .module('app')
         .controller('MainCtrl', MainCtrl);
 
-    function MainCtrl($interval, MainService) {
+    function MainCtrl($interval, MainService, hotkeys) {
         var mainCtrl = this;
+        mainCtrl.nameOfTheBooking = '';
+        mainCtrl.nameChosenForBooking = '';
+
+
+        hotkeys.add({
+            combo: 'enter',
+            allowIn: ['INPUT'],
+            callback: function(event, hotkey) {
+                mainCtrl.setBooking();
+            }
+        });
 
         //---- function ---------
         mainCtrl.init = init;
         mainCtrl.getStatus = getStatus;
         mainCtrl.setLightTimer = setLightTimer;
         mainCtrl.setMotionTimer = setMotionTimer;
+        mainCtrl.getBooking = getBooking;
+        mainCtrl.setBooking = setBooking;
 
         //---- variable ---------
         mainCtrl.status = {
@@ -53,11 +66,13 @@
         function init() {
             
             mainCtrl.getStatus();
+            mainCtrl.getBooking();
             mainCtrl.setLightTimer();
             mainCtrl.setMotionTimer();
             
             $interval(function() {
                 mainCtrl.getStatus();
+                mainCtrl.getBooking();
             }, 3000);
         }
 
@@ -118,6 +133,26 @@
                     mainCtrl.motionTimer.time++;
                 }
             }, 1000);
+        }
+
+        function getBooking() {
+
+            MainService.getBooking().then(function (bookingStatus){
+                if(bookingStatus != mainCtrl.nameOfTheBooking) {
+                    mainCtrl.nameOfTheBooking = bookingStatus;
+                }
+            })
+        }
+
+        function setBooking() {
+            
+            if(mainCtrl.nameOfTheBooking == '') {
+                MainService.setBooking(mainCtrl.nameChosenForBooking).then(function (){
+                    mainCtrl.nameOfTheBooking = mainCtrl.nameChosenForBooking;
+                    mainCtrl.nameChosenForBooking = '';
+                })
+            }
+            
         }
 
         mainCtrl.init();
