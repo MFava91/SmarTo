@@ -2,7 +2,6 @@
 	position: relative;
 	z-index: 1;
 	display: inline-block;
-	width: 100%;
 	vertical-align: top;
 }
 
@@ -45,7 +44,7 @@
 .input__label-content {
 	position: relative;
 	display: block;
-	padding: 1.6em 0;
+	padding: 1.1em 0;
 	width: 100%;
 }
 

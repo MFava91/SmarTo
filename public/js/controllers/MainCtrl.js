@@ -152,7 +152,7 @@
 
         function setBooking() {
             
-            if(mainCtrl.nameOfTheBooking == '') {
+            if(mainCtrl.nameOfTheBooking == '' && mainCtrl.nameChosenForBooking != '') {
                 MainService.setBooking(mainCtrl.nameChosenForBooking).then(function (){
                     ngNotify.set('Your reservation has been successful. You will be notified when the toilet is available.');
                     mainCtrl.nameOfTheBooking = mainCtrl.nameChosenForBooking;
