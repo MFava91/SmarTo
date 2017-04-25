@@ -1,5 +1,5 @@
 const bookingStatus = {
-  name: new String(),
+  name: '',
   isBooked: false,
   becomeAvaibleSinceBooked: true
 };
@@ -19,7 +19,7 @@ const getBookingName = (sensorStatus) => {
 
 const updateBookingStatus = (sensorStatus) => {
   if (sensorStatus.lightSensor.value === 0 && bookingStatus.becomeAvaibleSinceBooked) {
-    bookingStatus.name = new String();
+    bookingStatus.name = '';
     bookingStatus.isBooked = false;
   } else if (sensorStatus.lightSensor.value !== 0 && !bookingStatus.becomeAvaibleSinceBooked) {
     bookingStatus.becomeAvaibleSinceBooked = true;
