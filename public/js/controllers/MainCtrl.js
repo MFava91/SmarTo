@@ -11,7 +11,7 @@
         .module('app')
         .controller('MainCtrl', MainCtrl);
 
-    function MainCtrl($interval, MainService, hotkeys) {
+    function MainCtrl($interval, MainService, hotkeys, webNotification, ngNotify) {
         var mainCtrl = this;
         mainCtrl.nameOfTheBooking = '';
         mainCtrl.nameChosenForBooking = '';
@@ -32,6 +32,9 @@
         mainCtrl.setMotionTimer = setMotionTimer;
         mainCtrl.getBooking = getBooking;
         mainCtrl.setBooking = setBooking;
+        mainCtrl.enablesAvailabilityNotification = enablesAvailabilityNotification;
+        mainCtrl.stopAvailabilityNotification = stopAvailabilityNotification;
+        mainCtrl.notifyAvailability = notifyAvailability;
 
         //---- variable ---------
         mainCtrl.status = {
@@ -62,6 +65,9 @@
             minutes: 0,
             seconds: 0
         }
+
+        mainCtrl.availabilityNotificationEnabled = false;
+        mainCtrl.availabilityNotificationInterval;
 
         function init() {
             
@@ -148,11 +154,52 @@
             
             if(mainCtrl.nameOfTheBooking == '') {
                 MainService.setBooking(mainCtrl.nameChosenForBooking).then(function (){
+                    ngNotify.set('Your reservation has been successful. You will be notified when the toilet is available.');
                     mainCtrl.nameOfTheBooking = mainCtrl.nameChosenForBooking;
                     mainCtrl.nameChosenForBooking = '';
+                    mainCtrl.enablesAvailabilityNotification(mainCtrl.nameOfTheBooking + ', it\'s your turn! The toilet is available!')
                 })
             }
+        }
+
+        function enablesAvailabilityNotification(message, notifyMessage) {
             
+            if(notifyMessage) {
+                ngNotify.set(notifyMessage);
+            }
+            
+            if(!mainCtrl.availabilityNotificationEnabled) {
+                
+                mainCtrl.availabilityNotificationEnabled = true;
+                
+                mainCtrl.availabilityNotificationInterval = $interval(function() {
+                    if(mainCtrl.status.lightSensor.value > 0) {
+                        mainCtrl.notifyAvailability(message);
+                        mainCtrl.stopAvailabilityNotification();
+                    }
+                }, 1000);
+            }
+        }
+
+        function stopAvailabilityNotification() {
+            $interval.cancel(mainCtrl.availabilityNotificationInterval);
+        }
+
+        function notifyAvailability(message) {
+            webNotification.showNotification('SmarTo', {
+                body: message,
+                icon: '../../img/favicon/favicon.ico',
+                autoClose: 4000 //auto close the notification after 4 seconds (you can manually close it via hide function)
+            }, function onShow(error, hide) {
+                if (error) {
+                    window.alert('Unable to show notification: ' + error.message);
+                } else {
+                    mainCtrl.availabilityNotificationEnabled = false;
+                    setTimeout(function hideNotification() {
+                        hide(); //manually close the notification (you can skip this if you use the autoClose option)
+                    }, 5000);
+                }
+            });
         }
 
         mainCtrl.init();

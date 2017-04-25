@@ -33,6 +33,8 @@
     <meta name="theme-color" content="#427AA1">
 
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/ui-bootstrap/ui-bootstrap-custom-2.5.0-csp.css">
+    <link rel="stylesheet" href="libs/ng-notify/ng-notify.css">
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="style/input.css">
 </head>
@@ -88,7 +90,7 @@
                 <div>
                     <b style="font-size: 14px">BOOKED BY</b>
                 </div>
-                {{mainCtrl.nameOfTheBooking}}
+                {{mainCtrl.nameOfTheBooking | uppercase}}
             </div>
             <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4" ng-class="mainCtrl.nameOfTheBooking !== '' ? 'booked-ani-out' : 'booked-ani-in'">
                 <span class="input input--jiro">
@@ -100,6 +102,14 @@
             </div>
         </div>
     </div>
+    <div class="hidden-sm hidden-xs">
+        <img class="icon notification-icon pull-right" 
+        tooltip-placement="top" 
+        uib-tooltip="Notify when available" 
+        style="margin: 0 60px 20px 20px" 
+        ng-src="img/notification.svg"
+        ng-click="mainCtrl.enablesAvailabilityNotification('Toilet available!', 'You will be notified when the toilet comes back available.')">
+    </div>
     <div class="footer">
         <div class="container text-center">
             <p style="font-size: 90%">Made with <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> by Mattia Favaron  -  <a class="light-grey" href="https://github.com/MFava91/SmarTo">GitHub</a></p>
@@ -107,12 +117,16 @@
     </div>
 </div>
 
-
 <script src="libs/jquery/dist/jquery.js"></script>
 <script src="libs/angular/angular.min.js"></script>
 <script src="libs/angular/angular-animate.min.js"></script>
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/ui-bootstrap/ui-bootstrap-custom-2.5.0.min.js"></script>
+<script src="libs/ui-bootstrap/ui-bootstrap-custom-tpls-2.5.0.min.js"></script>
 <script src="libs/angular-hotkeys/hotkeys.min.js"></script>
+<script src="libs/simple-web-notification/web-notification.js"></script>
+<script src="libs/angular-web-notification/angular-web-notification.js"></script>
+<script src="libs/ng-notify/ng-notify.min.js"></script>
 
 <script src="app.js"></script>
 <script src="js/controllers/MainCtrl.js"></script>

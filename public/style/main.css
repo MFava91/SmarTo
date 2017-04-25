@@ -77,7 +77,7 @@ body {
     margin-bottom: 40px;
 }
 
-.sensor-icon {
+.sensor-icon, .notification-icon {
     height: 40px;
     -webkit-transition: all 1s ease-in-out;
     -moz-transition: all 1s ease-in-out;
@@ -89,6 +89,10 @@ body {
     margin-bottom: 10px;
     height: 230px;
     max-width: 100%;
+}
+
+.notification-icon {
+    cursor: pointer
 }
 
 
