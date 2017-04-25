@@ -44,7 +44,7 @@
                 name: name
             }
 
-            return $http.post('/booking', parameters)
+            return $http.put('/booking', parameters)
                 .then(function (results) {
                     return results.data;
                 }).catch(function (error) {
