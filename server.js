@@ -25,5 +25,5 @@ app.put('/booking', function (req, res) {
   res.status(204).end(); 
 });
 
-app.listen(8000);
+app.listen(80);
 console.log('App listening on port 80');
