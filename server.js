@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const sensors = require('./server/sensors');
-const booking = require('./server/booking');
+const { getBookingName, setBooking } = require('./server/booking');
 
 sensors.init();
 
@@ -17,12 +17,12 @@ app.get('/status', (req, res) => {
 });
 
 app.get('/booking', function (req, res) {
-  res.status(200).send(booking.getBooking(sensors.getSensorsStatus()));
+  res.status(200).json(getBookingName(sensors.getSensorsStatus()));
 });
 
-app.post('/booking', function (req, res) {
-  booking.setBooking(req.body.name, sensors.getSensorsStatus());
-  res.status(201).send(); 
+app.put('/booking', function (req, res) {
+  setBooking(req.body.name, sensors.getSensorsStatus());
+  res.status(204).end(); 
 });
 
 app.listen(80);
