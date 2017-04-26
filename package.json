@@ -1,7 +1,7 @@
 {
-  "name": "smartoilet",
-  "version": "0.0.2",
-  "description": "smart toilet",
+  "name": "SmarTo",
+  "version": "0.2.0",
+  "description": "Smart Toilet. With SmarTo you can check the toilet availability from the comfort of your PC/SmartPhone.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,8 +10,8 @@
     "coverage-server": "istanbul cover ./node_modules/mocha/bin/_mocha -- 'tests/server/**/*.js' --timeout 60000",
     "travis-test-coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- 'tests/server/**/*.js' --timeout 60000 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Mattia Favaron",
+  "license": "GNU AGPLv3",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",

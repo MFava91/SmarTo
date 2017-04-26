@@ -103,7 +103,6 @@ Now *SmarTo* is running _forever_ on server port 80.
 
 | Board | OS | Tested |
 | --- | --- | --- |
-| Raspberry Pi 1 Model B+ | Raspbian | NO |
 | Raspberry Pi 3 Model B | Raspbian | YES |
 | OrangePi Lite | Armbian | YES |
 
@@ -154,15 +153,23 @@ The coverage files will be generated in the _coverage/_ folder, in the root fold
 
 - This is a little project built and develop in a week, in my free time after work. Many features are missing and the sensors can still be changed.
 - If you like this project, help is always welcome.
+- For any suggestion, open an issue.
 
 ## ToDo
 
-- [ ] Rewrite all with modern technologies (ES6, Angular 4, Bootstrap 4)
+- [X] Toilet reservation
+- [X] Rewrite the backend with the newer version of node.js
+- [ ] Rewrite front-end with modern technologies + test
 - [ ] Collect and show statistical data (es: peak hours)
-- [ ] Toilet reservation (also with _amazon dash button_)
 - [ ] Android App
 
+## Thanks
+
+I would say thanks to:
+- [FMeneguzzo](https://github.com/FMeneguzzo) for his help in updating and testing the backend.
+
 ## Credits
+
 Icon made by [Freepik](http://www.flaticon.com/authors/freepik),  from [www.flaticon.com](www.flaticon.com )
 
 ## License
