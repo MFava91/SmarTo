@@ -2,7 +2,6 @@
 	position: relative;
 	z-index: 1;
 	display: inline-block;
-	width: 100%;
 	vertical-align: top;
 }
 
@@ -45,7 +44,7 @@
 .input__label-content {
 	position: relative;
 	display: block;
-	padding: 1.6em 0;
+	padding: 1.1em 0;
 	width: 100%;
 }
 
@@ -208,12 +207,13 @@
 
 @keyframes booked-anim-in {
 	0% {
-		opacity: 0;
+		opacity: 0 !important;
 		-webkit-transform: translate3d(0, -1em, 0);
 		transform: translate3d(0, -1em, 0);
 	}
+
 	100% {
-		opacity: 1;
+		opacity: 1 !important;
 		-webkit-transform: translate3d(0, 3em, 0);
 		transform: translate3d(0, 3em, 0);
 	}

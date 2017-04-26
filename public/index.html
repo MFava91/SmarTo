@@ -33,8 +33,11 @@
     <meta name="theme-color" content="#427AA1">
 
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/ui-bootstrap/ui-bootstrap-custom-2.5.0-csp.css">
+    <link rel="stylesheet" href="libs/ng-notify/ng-notify.css">
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="style/input.css">
+    <link rel="stylesheet" href="style/button.css">
 </head>
 <body>
 <div ng-controller="MainCtrl as mainCtrl" class="wrapper">
@@ -84,21 +87,35 @@
                 <p style="font-size: 74%" ng-if="mainCtrl.lightTimer.minutes < 20 || mainCtrl.motionTimer.minutes < 2" ng-bind="mainCtrl.status.lightSensor.value == 1 ? 'AVAILABLE' : 'OCCUPIED'"></p>
                 <p style="font-size: 74%" ng-if="mainCtrl.lightTimer.minutes >= 20 && mainCtrl.motionTimer.minutes >= 2">MAYBE AVAILABLE?!</p>
             </div>
-            <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4" style="text-align: center; min-height: 20px"  ng-class="mainCtrl.nameOfTheBooking !== '' ? 'booked-ani-in' : 'booked-ani-out'">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4" style="text-align: center; min-height: 57px"  ng-class="mainCtrl.nameOfTheBooking !== '' ? 'booked-ani-in' : 'booked-ani-out'">
                 <div>
                     <b style="font-size: 14px">BOOKED BY</b>
                 </div>
-                {{mainCtrl.nameOfTheBooking}}
+                {{mainCtrl.nameOfTheBooking | uppercase}}
             </div>
-            <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4" ng-class="mainCtrl.nameOfTheBooking !== '' ? 'booked-ani-out' : 'booked-ani-in'">
-                <span class="input input--jiro">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-3 col-md-6 col-md-offset-3" ng-class="mainCtrl.nameOfTheBooking !== '' ? 'booked-ani-out' : 'booked-ani-in'">
+                <span class="input input--jiro col-xs-7 col-sm-7 col-sm-offset-1 col-md-6 col-md-offset-1 col-lg-5 col-lg-offset-2">
 					<input class="input__field input__field--jiro" type="text" id="input-10" ng-model="mainCtrl.nameChosenForBooking"/>
 					<label class="input__label input__label--jiro" for="input-10">
 						<span class="input__label-content input__label-content--jiro">Booking here!</span>
 					</label>
 				</span>
+                <span class="col-xs-3 col-xs-offset-1 col-sm-3 col-md-2 col-lg-2">
+                    <button class="button button--ujarak button--border-medium button--text-thick" 
+                        ng-click="mainCtrl.setBooking();"
+                        ng-disabled="mainCtrl.nameChosenForBooking == ''">Submit
+                    </button>
+                </span>
             </div>
         </div>
+    </div>
+    <div class="hidden-sm hidden-xs">
+        <img class="icon notification-icon pull-right" 
+        tooltip-placement="top" 
+        uib-tooltip="Notify when available" 
+        style="margin: 0 60px 20px 20px" 
+        ng-src="img/notification.svg"
+        ng-click="mainCtrl.enablesAvailabilityNotification('Toilet available!', 'You will be notified when the toilet comes back available.')">
     </div>
     <div class="footer">
         <div class="container text-center">
@@ -107,12 +124,16 @@
     </div>
 </div>
 
-
 <script src="libs/jquery/dist/jquery.js"></script>
 <script src="libs/angular/angular.min.js"></script>
 <script src="libs/angular/angular-animate.min.js"></script>
 <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/ui-bootstrap/ui-bootstrap-custom-2.5.0.min.js"></script>
+<script src="libs/ui-bootstrap/ui-bootstrap-custom-tpls-2.5.0.min.js"></script>
 <script src="libs/angular-hotkeys/hotkeys.min.js"></script>
+<script src="libs/simple-web-notification/web-notification.js"></script>
+<script src="libs/angular-web-notification/angular-web-notification.js"></script>
+<script src="libs/ng-notify/ng-notify.min.js"></script>
 
 <script src="app.js"></script>
 <script src="js/controllers/MainCtrl.js"></script>
