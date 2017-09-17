@@ -1,6 +1,6 @@
 {
   "name": "SmarTo",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Smart Toilet. With SmarTo you can check the toilet availability from the comfort of your PC/SmartPhone.",
   "main": "server.js",
   "scripts": {

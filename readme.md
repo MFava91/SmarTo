@@ -4,7 +4,7 @@
 
 *SmarTo* is a web application built to make your office life *easier*. With *SmarTo* you can check the toilet availability from the comfort of your PC/SmartPhone.
 
-![SmarTo home page](doc/SmarTo_home.jpg)
+![SmarTo home page](doc/SmarTo.gif)
 
 We installed it in a bathroom with no windows, so the light sensor makes the bulk of the work. The motion sensor comes in handy when someone forgets to turn off the light. 
 In fact, if the light has been on but there have been no movements within the past 10 minutes, SmarTo will notify that the toilet may be available.
