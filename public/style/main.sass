@@ -1,0 +1,164 @@
+@import _spacing-helpers
+
+$bg-light-grey: #EEF2F3
+$bg-darg-grey: #8E9EAB
+
+$dark-grey: #0d160b
+$light-blue: #427AA1
+$pink: #EF476F
+
+$mobile: 450px
+
+
+$small-font: 60%
+$medium-font: 72%
+
+$sensor-icon-height: 1.5em
+
+html, body, .container-fluid
+    height: 100%
+    color: $dark-grey
+    background: #eef2f3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+#logo 
+    img
+        height: 35px
+        margin: 10px 
+    span
+        margin-right: 3px
+        height: 100%
+    span:nth-of-type(2)
+        font-size: $small-font
+
+#status
+    min-height: calc(90% - 9em)
+    text-align: center
+
+    img, #status-image
+        @media (max-width: $mobile)
+            height: 10em
+        @media (min-width: $mobile)
+            height: 15em
+
+    p
+        margin-top: 1em
+        font-weight: bold
+    
+#sensors
+    position: absolute
+
+    @media (max-width: $mobile)
+        right: 1em
+        top: 2em
+    @media (min-width: $mobile)
+        right: 2em
+        top: 6em
+
+    p
+        font-size: $medium-font
+
+    img, svg
+        @media (max-width: $mobile)
+            height: 1em
+        @media (min-width: $mobile)
+            height: 1.3em
+
+#booking
+    #booking-input
+        -webkit-animation: booking-input-anim-out 0.5s forwards
+        animation: booking-input-anim-out 0.5s forwards
+
+    #booking-input.nameChosen
+        -webkit-animation: booking-input-anim-in 0.5s forwards
+        animation: booking-input-anim-in 0.5s forwards
+
+    #booking-image
+        margin: 1em 0 0 0
+
+    #booking-image.ng-hide-remove
+        -webkit-animation: booking-img-anim-in 0.3s forwards
+        animation: booking-img-anim-in 0.3s forwards
+
+    #booking-image.ng-hide-add
+        -webkit-animation: booking-img-anim-out 0.3s forwards
+        animation: booking-img-anim-out 0.3s forwards
+
+    img
+        cursor: pointer
+        position: absolute
+
+#notification, #info
+    position: absolute
+    bottom: 2em
+
+#notification
+    right: 7em
+    img
+        height: 30px
+
+#info
+    right: 3em
+    img
+        height: 30px
+
+#info-nav
+    background-color: $dark-grey
+    color: white
+    
+    .container, .row, .col
+        height: 100%
+
+    div
+        font-size: 15px
+        width: 100%
+        padding: 0 15px
+        span
+            display: block
+            margin-bottom: 1em
+            a
+                color: $bg-light-grey
+                img
+                    height: 30px
+
+
+@-webkit-keyframes booking-input-anim-out
+	0%
+		-webkit-transform: translate3d(-40px, 0, 0)
+		transform: translate3d(-40px, 0, 0)
+	100% 
+		-webkit-transform: translate3d(0, 0, 0)
+		transform: translate3d(0, 0, 0)
+
+@-webkit-keyframes booking-input-anim-in
+	0%
+		-webkit-transform: translate3d(0, 0, 0)
+		transform: translate3d(0, 0, 0)
+	100% 
+		-webkit-transform: translate3d(-40px, 0, 0)
+		transform: translate3d(-40px, 0, 0)
+
+
+@-webkit-keyframes booking-img-anim-in
+	0%
+		opacity: 0
+		-webkit-transform: translate3d(0, 2em, 0) rotate(90deg)
+		transform: translate3d(0, 2em, 0) rotate(90deg)
+	100% 
+		opacity: 1
+		-webkit-transform: translate3d(0, 0em, 0)
+		transform: translate3d(0, 0em, 0)
+
+@-webkit-keyframes booking-img-anim-out
+    0%
+        opacity: 1
+        -webkit-transform: translate3d(0, 0em, 0)
+        transform: translate3d(0, 0em, 0)
+    100% 
+        opacity: 0
+        -webkit-transform: translate3d(0, 2em, 0)
+        transform: translate3d(0, 2em, 0)
+	
+
+
