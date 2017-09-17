@@ -34,7 +34,6 @@
   <meta name="theme-color" content="#427AA1">
 
   <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="libs/ui-bootstrap/ui-bootstrap-custom-2.5.0-csp.css">
   <link rel="stylesheet" href="libs/ng-notify/ng-notify.css">
   <link rel="stylesheet" href="libs/offside/offside.css">
   <link rel="stylesheet" href="style/main.css">
@@ -176,7 +175,7 @@
     $(document).ready(function () {
       $('#main-container').removeClass('light-grey');
       $('#main-container').addClass('dark-grey');
-      $('[data-toggle="tooltip"]').tooltip();
+      $('[data-toggle="tooltip"]').tooltip({container: '#notification'});
     });
 
     //Offside.js minimal setup
