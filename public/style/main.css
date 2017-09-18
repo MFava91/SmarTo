@@ -324,9 +324,7 @@ html, body, .container-fluid {
   background: #eef2f3;
   /* fallback for old browsers */
   background: -webkit-linear-gradient(to bottom, #eef2f3, #8e9eab);
-  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #eef2f3, #8e9eab);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #logo img {
@@ -350,11 +348,17 @@ html, body, .container-fluid {
 
 @media (max-width: 450px) {
   #status img, #status #status-image {
+    height: 8em;
+  }
+}
+
+@media (min-width: 450px) and (max-width: 768px) {
+  #status img, #status #status-image {
     height: 10em;
   }
 }
 
-@media (min-width: 450px) {
+@media (min-width: 768px) {
   #status img, #status #status-image {
     height: 15em;
   }
@@ -371,20 +375,41 @@ html, body, .container-fluid {
 
 @media (max-width: 450px) {
   #sensors {
-    right: 1em;
-    top: 2em;
+    right: 0.5em;
+    top: 1.5em;
   }
 }
 
-@media (min-width: 450px) {
+@media (min-width: 450px) and (max-width: 768px) {
+  #sensors {
+    right: 1em;
+    top: 3em;
+  }
+}
+
+@media (min-width: 768px) {
   #sensors {
     right: 2em;
     top: 6em;
   }
 }
 
-#sensors p {
-  font-size: 72%;
+@media (max-width: 450px) {
+  #sensors p {
+    font-size: 60%;
+  }
+}
+
+@media (min-width: 450px) and (max-width: 768px) {
+  #sensors p {
+    font-size: 72%;
+  }
+}
+
+@media (min-width: 768px) {
+  #sensors p {
+    font-size: 72%;
+  }
 }
 
 @media (max-width: 450px) {
@@ -393,7 +418,13 @@ html, body, .container-fluid {
   }
 }
 
-@media (min-width: 450px) {
+@media (min-width: 450px) and (max-width: 768px) {
+  #sensors img, #sensors svg {
+    height: 1.1em;
+  }
+}
+
+@media (min-width: 768px) {
   #sensors img, #sensors svg {
     height: 1.3em;
   }

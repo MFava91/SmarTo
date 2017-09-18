@@ -110,7 +110,7 @@
       {{mainCtrl.nameOfTheBooking | uppercase}}
     </div>
     <div id="booking" class="row justify-content-center" ng-class="mainCtrl.nameOfTheBooking !== '' ? 'booked-ani-out' : 'booked-ani-in'">
-      <span id="booking-input" class="input input--jiro col-xs-7 col-sm-7 col-sm-offset-1 col-md-6 col-md-offset-1 col-lg-5 offset-lg-2"
+      <span id="booking-input" class="input input--jiro col-7 col-md-6 col-lg-5"
         ng-class="mainCtrl.nameChosenForBooking != '' ? 'nameChosen' : ''">
             <input class="input__field input__field--jiro" type="text" id="input-10" ng-model="mainCtrl.nameChosenForBooking"/>
             <label class="input__label input__label--jiro" for="input-10">
@@ -121,7 +121,7 @@
         <img src="img/send.svg" style="height: 20px" ng-click="mainCtrl.setBooking();" ng-disabled="mainCtrl.nameChosenForBooking == ''">
       </div>
     </div>
-    <div id="notification" class="hidden-sm hidden-xs">
+    <div id="notification" class="d-none d-md-block">
       <img class="icon notification-icon" data-toggle="tooltip" data-placement="top" title="Notify when available" ng-src="img/notification.svg"
         ng-click="mainCtrl.enablesAvailabilityNotification('Toilet available!', 'You will be notified when the toilet comes back available.')">
     </div>
