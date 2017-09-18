@@ -7,6 +7,7 @@ $dark-grey: #0d160b
 $light-blue: #427AA1
 $pink: #EF476F
 
+$tablet: 768px
 $mobile: 450px
 
 
@@ -19,8 +20,8 @@ html, body, .container-fluid
     height: 100%
     color: $dark-grey
     background: #eef2f3;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to bottom, #eef2f3, #8e9eab)  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #eef2f3, #8e9eab) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 #logo 
     img
@@ -38,8 +39,10 @@ html, body, .container-fluid
 
     img, #status-image
         @media (max-width: $mobile)
+            height: 8em
+        @media (min-width: $mobile) and  (max-width: $tablet)
             height: 10em
-        @media (min-width: $mobile)
+        @media (min-width: $tablet)
             height: 15em
 
     p
@@ -50,19 +53,29 @@ html, body, .container-fluid
     position: absolute
 
     @media (max-width: $mobile)
+        right: 0.5em
+        top: 1.5em    
+    @media (min-width: $mobile) and  (max-width: $tablet)
         right: 1em
-        top: 2em
-    @media (min-width: $mobile)
+        top: 3em 
+    @media (min-width: $tablet)
         right: 2em
         top: 6em
 
     p
+      @media (max-width: $mobile)
+        font-size: $small-font
+      @media (min-width: $mobile) and  (max-width: $tablet)
+        font-size: $medium-font
+      @media (min-width: $tablet)
         font-size: $medium-font
 
     img, svg
         @media (max-width: $mobile)
             height: 1em
-        @media (min-width: $mobile)
+        @media (min-width: $mobile) and  (max-width: $tablet)
+            height: 1.1em
+        @media (min-width: $tablet)
             height: 1.3em
 
 #booking
