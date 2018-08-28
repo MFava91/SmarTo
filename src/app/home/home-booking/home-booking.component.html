@@ -1,0 +1,21 @@
+<div class="smr-booking">
+  <div [ngClass]="nameOfTheBooking !== '' && nameOfTheBooking ? 'booked-ani-in' : 'booked-ani-out'">
+    <p class="smr-booking__title">BOOKED BY</p>
+    {{ nameOfTheBooking | uppercase }}
+  </div>
+  <div class="smr-booking__content" [ngClass]="nameOfTheBooking !== '' && nameOfTheBooking ? 'booked-ani-out' : 'booked-ani-in'">
+    <span id="booking-input" class="input input--jiro" [ngClass]="nameChosenForBooking != '' && nameChosenForBooking ? 'nameChosen' : ''">
+      <input class="input__field input__field--jiro" 
+        type="text" 
+        id="input-book" 
+        [(ngModel)]="nameChosenForBooking" 
+        (keydown.enter)="setBooking()"/>
+      <label class="input__label input__label--jiro" for="input-book">
+        <span class="input__label-content input__label-content--jiro">BOOKING HERE!</span>
+      </label>
+    </span>
+    <div id="booking-image" *ngIf="nameChosenForBooking != '' &&  nameChosenForBooking" [@bookingButton]>
+      <img src="assets/images/send.svg" (click)="setBooking()" [attr.disabled]="nameChosenForBooking == ''" height="20">
+    </div>
+  </div>
+</div>

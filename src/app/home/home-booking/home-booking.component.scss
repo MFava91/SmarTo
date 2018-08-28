@@ -1,0 +1,290 @@
+.smr-booking {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    text-align: center;
+    height: 20%;
+
+    &__content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    &__title {
+        font-weight: bold;
+        margin: 0 0 16px 0;
+    }
+}
+
+
+.input {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+	vertical-align: top;
+	
+	&__field {
+		position: relative;
+		display: block;
+		float: left;
+		padding: 0.8em;
+		width: 60%;
+		border: none;
+		border-radius: 0;
+		background: #f8f8f8;
+		color: #aaaaaa;
+		font-weight: bold;
+		-webkit-appearance: none;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&__label {
+		display: inline-block;
+		float: right;
+		padding: 0 1em;
+		width: 40%;
+		color: #333;
+		font-weight: bold;
+		font-size: 90%;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+        user-select: none;
+        
+		&-content {
+			position: relative;
+			display: block;
+			padding: 1.1em 0;
+			width: 100%;
+		}
+	}
+}
+
+.graphic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: none;
+}
+
+.icon {
+    color: #ddd;
+    font-size: 150%;
+}
+
+.input--jiro {
+	// min-width: 220px;
+    margin: 16px 0 0 0;
+}
+
+.input__field--jiro {
+    padding: 0.85em 0.5em;
+    width: calc(100% - 1em);
+    background: transparent;
+    color: #f8f8f8;
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.input__label--jiro {
+    position: absolute;
+    left: 0;
+    padding: 0 8px;
+    width: calc(100% - 16px);
+    height: 100%;
+    text-align: left;
+    pointer-events: none;
+}
+
+.input__label-content--jiro {
+    -webkit-transition: -webkit-transform 0.3s 0.3s;
+    transition: transform 0.3s 0.3s;
+}
+
+.input__label--jiro::before,
+.input__label--jiro::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+}
+
+.input__label--jiro::before {
+    border-top: 2px solid #0d160b;
+    -webkit-transform: translate3d(0, 100%, 0) translate3d(0, -2px, 0);
+    transform: translate3d(0, 100%, 0) translate3d(0, -2px, 0);
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+}
+
+.input__label--jiro::after {
+    z-index: -1;
+    background: #0d160b;
+    -webkit-transform: scale3d(1, 0, 1);
+    transform: scale3d(1, 0, 1);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+}
+
+.input__field--jiro:focus,
+.input--filled .input__field--jiro {
+    opacity: 1;
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+}
+
+.input__field--jiro:focus+.input__label--jiro .input__label-content--jiro,
+.input--filled .input__label-content--jiro {
+    -webkit-transform: translate3d(0, -80%, 0);
+    transform: translate3d(0, -80%, 0);
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.input__field--jiro:focus+.input__label--jiro::before,
+.input--filled .input__label--jiro::before {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+.input__field--jiro:focus+.input__label--jiro::before,
+.input--filled .input__label--jiro::before {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.input__field--jiro:focus+.input__label--jiro::after,
+.input--filled .input__label--jiro::after {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    -webkit-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.smr-booking__content {
+    #booking-input {
+        -webkit-animation: booking-input-anim-out 0.5s forwards;
+        animation: booking-input-anim-out 0.5s forwards;
+    }
+    #booking-input.nameChosen {
+        -webkit-animation: booking-input-anim-in 0.5s forwards;
+        animation: booking-input-anim-in 0.5s forwards;
+    }
+    img {
+        cursor: pointer;
+		position: absolute;
+		right: 0;
+        bottom: 8px;
+    }
+}
+
+@-webkit-keyframes booking-input-anim-out {
+	0% {
+		-webkit-transform: translate3d(-40px, 0, 0);
+		transform: translate3d(-40px, 0, 0);
+	}
+	100% {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+}
+@-webkit-keyframes booking-input-anim-in {
+	0% {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0)
+	}
+	100% {
+		-webkit-transform: translate3d(-40px, 0, 0);
+		transform: translate3d(-40px, 0, 0);
+	}
+}
+
+
+
+.booked-ani-out {
+	-webkit-animation: booked-anim-out 0.3s forwards;
+	animation: booked-anim-out 0.3s forwards;
+}
+
+@-webkit-keyframes booked-anim-out {
+	0% {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 0em, 0);
+		transform: translate3d(0, 0em, 0);
+	}
+	100% {
+		opacity: 0;
+		height: 0;
+		min-height: 0;
+		-webkit-transform: translate3d(0, 1em, 0);
+		transform: translate3d(0, 1em, 0);
+	}
+}
+
+@keyframes booked-anim-out {
+	0% {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 0em, 0);
+		transform: translate3d(0, 0em, 0);
+	}
+	100% {
+		opacity: 0;
+		height: 0;
+		min-height: 0;
+		-webkit-transform: translate3d(0, 1em, 0);
+		transform: translate3d(0, 1em, 0);
+	}
+}
+
+.booked-ani-in {
+	-webkit-animation: booked-anim-in 0.3s forwards;
+	animation: booked-anim-in 0.3s forwards;
+}
+
+@-webkit-keyframes booked-anim-in {
+	0% {
+		opacity: 0;
+		height: 0;
+		min-height: 0;
+		-webkit-transform: translate3d(0, -1em, 0);
+		transform: translate3d(0, -1em, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 0em, 0);
+		transform: translate3d(0, 0em, 0);
+	}
+}
+
+@keyframes booked-anim-in {
+	0% {
+		opacity: 0 !important;
+		height: 0;
+		min-height: 0;
+		-webkit-transform: translate3d(0, -1em, 0);
+		transform: translate3d(0, -1em, 0);
+	}
+
+	100% {
+		opacity: 1 !important;
+		-webkit-transform: translate3d(0, 0em, 0);
+		transform: translate3d(0, 0em, 0);
+	}
+}

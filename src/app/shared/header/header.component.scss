@@ -1,0 +1,17 @@
+.smr-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: calc(100% - 16px);
+    height: 30px;
+    padding: 8px;
+
+    &__title {
+        margin: 0 0 0 16px;
+        line-height: 30px;
+        font-size: 18px;
+    }
+    &__version {
+        font-size: 14px;
+    }
+}

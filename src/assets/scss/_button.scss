@@ -1,0 +1,125 @@
+.button {
+    float: left;
+    width: 100%;
+    min-width: 80px;
+    max-width: 250px;
+    display: block;
+    margin-top: 1em;
+    padding: 0.8em 0.3em;
+    border: none;
+    background: none;
+    color: inherit;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button>span {
+    vertical-align: middle;
+}
+
+/* Sizes */
+
+.button--size-s {
+    font-size: 14px;
+}
+
+.button--size-m {
+    font-size: 16px;
+}
+
+.button--size-l {
+    font-size: 18px;
+}
+
+/* Typography and Roundedness */
+
+.button--text-upper {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.button--text-thin {
+    font-weight: 300;
+}
+
+.button--text-medium {
+    font-weight: 500;
+}
+
+.button--text-thick {
+    font-weight: 600;
+}
+
+/* Borders */
+
+.button--border-thin {
+    border: 1px solid;
+}
+
+.button--border-medium {
+    border-bottom: 2px solid;
+}
+
+.button--border-thick {
+    border: 3px solid;
+}
+
+/* Individual button styles */
+
+/* Ujarak */
+
+.button--ujarak {
+    -webkit-transition: border-color 0.4s, color 0.4s;
+    transition: border-color 0.4s, color 0.4s;
+}
+
+.button--ujarak::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0d160b;
+    z-index: -1;
+    opacity: 0;
+    -webkit-transform: scale3d(1, 0.7, 1);
+    transform: scale3d(1, 0.7, 1);
+    -webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
+    transition: transform 0.4s, opacity 0.4s;
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.button--ujarak.button--inverted::before {
+    background: #7986CB;
+}
+
+.button--ujarak,
+.button--ujarak::before {
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.button--ujarak:hover {
+    color: #fff;
+    border-color: #0d160b;
+}
+
+.button--ujarak.button--inverted:hover {
+    color: #0d160b;
+    border-color: #fff;
+}
+
+.button--ujarak:hover::before {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}

@@ -1,0 +1,100 @@
+.smr-status {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 80%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &__img {
+        margin: 0 0 16px 0;
+    }
+    &__text {
+        font-weight: 700;
+    }
+}
+
+.smr-sensors {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: absolute;
+    text-align: center;
+    font-size: 12px;
+
+    &__title {
+        padding: 0 0 8px 0;
+        font-weight: bold;
+    }
+    &__status {
+        padding: 8px 0 6px 0;
+    }
+}
+
+@media (max-width: 450px) {
+    .smr-status {
+        &__img {
+            height: 8em
+        }
+    }
+    .smr-sensors {
+        top: 0;
+        right: 8px;
+
+        &__container {
+            padding: 8px;
+        }
+
+        &__img {
+            width: 25px;
+        }
+        &__title {
+            font-size: 10px;
+        }
+    }
+    
+}
+@media (min-width: 450px) and  (max-width: 768px) {
+    .smr-status {
+        &__img {
+            height: 10em
+        }
+    }
+    .smr-sensors {
+        top: 16px;
+        right: 16px;
+
+        &__container {
+            padding: 16px;
+        }
+        &__img {
+            width: 30px;
+        }
+        &__title {
+            font-size: 11px;
+        }
+    }
+}
+@media (min-width: 768px) {
+    .smr-status {
+        &__img {
+            height: 13em;
+        }
+    }
+    .smr-sensors {
+        top: 20px;
+        right: 16px;
+
+        &__container {
+            padding: 16px;
+        }
+        &__img {
+            width: 35px;
+        }
+        &__title {
+            font-size: 12px;
+        }
+    }
+}

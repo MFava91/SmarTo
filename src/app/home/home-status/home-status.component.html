@@ -1,0 +1,50 @@
+<div class="smr-status">
+  <img 
+    *ngIf="status.lightSensor.value == 1" 
+    class="smr-status__img" 
+    src="../assets/images/toilet.svg">
+  
+  <img 
+    *ngIf="status.lightSensor.value == 0 && ((lightTimer.timerStarted && lightTimer.minutes < 20) 
+      || (motionTimer.timerStarted && motionTimer.minutes < 2))" 
+    class="smr-status__img"
+    src="../assets/images/disturb.svg">
+    
+  
+  <img 
+    *ngIf="status.lightSensor.value == 0 && lightTimer.timerStarted && lightTimer.minutes >= 20
+      && motionTimer.timerStarted && motionTimer.minutes >= 2"
+    class="smr-status__img" 
+    src="../assets/images/question.svg">
+
+
+    <p *ngIf="lightTimer.minutes < 20 || motionTimer.minutes < 2" class="smr-status__text">
+      {{ status.lightSensor.value == 1 ? 'AVAILABLE' : 'OCCUPIED'}}
+    </p>
+    <p *ngIf="lightTimer.minutes >= 20 && motionTimer.minutes >= 2" class="smr-status__text">
+      MAYBE AVAILABLE?!
+    </p>
+
+    <div class="smr-sensors">
+      <div class="smr-sensors__container" [ngClass]="lightTimer.minutes >= 20 ? 'm-b-10' : 'm-b-40'">
+        <p class="smr-sensors__title">LIGHT SENSOR</p>
+        <img class="smr-sensors__img" src="../assets/images/light.svg">
+        <p class="smr-sensors__status">{{ status.lightSensor.value == 0 ? 'ON' : 'OFF' }}</p>
+        <p class="smr-sensors__timer" *ngIf="lightTimer.timerStarted && lightTimer.minutes >= 20">
+          {{ lightTimer.hours > 0 ? lightTimer.hours + ':' : '' }} {{ lightTimer.minutes
+          < 10 ? '0' + lightTimer.minutes : lightTimer.minutes }} : {{ lightTimer.seconds < 10 ? '0' + lightTimer.seconds : lightTimer.seconds
+            }} </p>
+      </div>
+      <div>
+        <p class="smr-sensors__title">MOTION SENSOR</p>
+        <img class="smr-sensors__img" src="../assets/images/motion.svg">
+        <p class="smr-sensors__status">{{ status.motionSensor.value == 1 ? 'ON' : 'OFF' }}</p>
+        <p class="smr-sensors__timer" *ngIf="motionTimer.timerStarted && lightTimer.minutes >= 20 && motionTimer.minutes >= 2">
+          {{ motionTimer.hours > 0 ? motionTimer.hours + ':' : '' }} {{ motionTimer.minutes
+          < 10 ? '0' + motionTimer.minutes : motionTimer.minutes }} : {{ motionTimer.seconds < 10 ? '0' + motionTimer.seconds : motionTimer.seconds
+            }} </p>
+      </div>
+    </div>
+  
+</div>
+
