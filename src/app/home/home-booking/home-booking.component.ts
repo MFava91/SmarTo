@@ -34,8 +34,9 @@ import * as webNotification from 'simple-web-notification';
 
 export class HomeBookingComponent implements OnInit {
 
-  private nameOfTheBooking: String;
-  private nameChosenForBooking: String;
+  public  nameOfTheBooking: String;
+  public nameChosenForBooking: String;
+  
   private availabilityNotificationEnabled: Boolean = false;
   private availabilityNotificationInterval: any;
   private availabilityNotificationMessage: String;
