@@ -1,0 +1,30 @@
+{
+  "name": "smarto-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "test-server": "mocha './tests/server/**/*.js' --recursive --check-leaks --reporter min --timeout 60000",
+    "coverage-server": "istanbul cover ./node_modules/mocha/bin/_mocha -- 'tests/server/**/*.js' --timeout 60000",
+    "travis-test-coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- 'tests/server/**/*.js' --timeout 60000 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  },
+  "author": "Mattia Favaron",
+  "license": "GNU AGPLv3",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "onoff": "^3.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "mocha-lcov-reporter": "^1.3.0"
+  }
+}

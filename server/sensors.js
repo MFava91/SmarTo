@@ -1,9 +1,9 @@
-const Gpio = process.env.NODE_ENV === 'development' ? 
+const Gpio = //process.env.NODE_ENV === 'development' ? 
   function Gpio() {
     this.read = (cb) => cb(null, 1);
     this.unexport = () => {};
   } 
-  : require('onoff').Gpio;
+  //: require('onoff').Gpio;
 
 // Set GPIO number
 const motionSensor = new Gpio(6, 'in', 'both');

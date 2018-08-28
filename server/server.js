@@ -3,14 +3,14 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const path = require('path');
-const sensors = require('./api/sensors');
-const { getBookingName, setBooking } = require('./api/booking');
+const sensors = require('./sensors');
+const { getBookingName, setBooking } = require('./booking');
 
 sensors.init();
 
 const app = express();
 
-app.use(express.static(__dirname + '/dist/SmarTo'));
+app.use(express.static(__dirname + '/../dist/SmarTo'));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
@@ -38,7 +38,7 @@ app.put('/booking', (req, res) => {
 });
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/dist/SmarTo/index.html'));
+  res.sendFile(path.join(__dirname + '/../dist/SmarTo/index.html'));
 });
 
 const server = http.createServer(app);
