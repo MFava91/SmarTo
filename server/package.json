@@ -16,7 +16,8 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "morgan": "^1.9.0",
-    "onoff": "^3.2.1"
+    "onoff": "^3.2.1",
+    "socket.io": "^2.1.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",

@@ -1,12 +1,13 @@
 const express = require('express');
-const http = require('http');
+const http = require('http').Server(express);
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const io = require('socket.io')(3333);
 const path = require('path');
 const sensors = require('./sensors');
 const { getBookingName, setBooking } = require('./booking');
 
-sensors.init();
+sensors.init(io);
 
 const app = express();
 
@@ -33,7 +34,7 @@ app.get('/booking', (req, res) => {
 });
 
 app.put('/booking', (req, res) => {
-  setBooking(req.body.name, sensors.getSensorsStatus());
+  setBooking(req.body.name, sensors.getSensorsStatus(), io);
   res.status(204).end(); 
 });
 
@@ -41,5 +42,10 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname + '/../dist/SmarTo/index.html'));
 });
 
-const server = http.createServer(app);
-server.listen(3000, () => console.log('App listening on port 80'));
+io.on('connection', (socket) => {
+  io.sockets.emit('status', sensors.getSensorsStatus())
+  io.sockets.emit('booking', getBookingName(sensors.getSensorsStatus()));
+});
+
+
+app.listen(3000, () => console.log('App listening on port 3000'));

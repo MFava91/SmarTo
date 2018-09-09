@@ -4,26 +4,28 @@ const bookingStatus = {
   becomeAvaibleSinceBooked: true
 };
 
-const setBooking = (name, sensorStatus) => {
+const setBooking = (name, sensorStatus, io) => {
   if (!bookingStatus.isBooked) {
     bookingStatus.name = name;
     bookingStatus.isBooked = true;
     bookingStatus.becomeAvaibleSinceBooked = sensorStatus.lightSensor.value === 1;
+    io.sockets.emit('booking', bookingStatus.name);
   }
 };
 
 const getBookingName = (sensorStatus) => {
-  updateBookingStatus(sensorStatus);
   return bookingStatus.name;
 };
 
-const updateBookingStatus = (sensorStatus) => {
+const updateBookingStatus = (sensorStatus, io) => {
   if (sensorStatus.lightSensor.value === 0 && bookingStatus.becomeAvaibleSinceBooked) {
     bookingStatus.name = '';
     bookingStatus.isBooked = false;
+    io.sockets.emit('booking',bookingStatus.name);
   } else if (sensorStatus.lightSensor.value !== 0 && !bookingStatus.becomeAvaibleSinceBooked) {
     bookingStatus.becomeAvaibleSinceBooked = true;
   }
+  return bookingStatus.name;
 };
 
 module.exports = {

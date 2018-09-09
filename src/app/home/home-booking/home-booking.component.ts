@@ -110,8 +110,5 @@ export class HomeBookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBooking();
-    setInterval(() => {
-      this.getBooking();
-    }, 3000);
   }
 }

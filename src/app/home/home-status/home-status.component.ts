@@ -79,11 +79,6 @@ export class HomeStatusComponent implements OnInit {
     this.getStatus();
     this.setTimer(this.lightTimer);
     this.setTimer(this.motionTimer);
-
-    setInterval(() => {
-      this.getStatus();
-      // this.getBooking();
-    }, 3000);
   }
 
 }

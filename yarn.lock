@@ -231,6 +231,10 @@
   version "2.53.43"
   resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-2.53.43.tgz#2de3d718819bc20165754c4a59afb7e9833f6707"
 
+"@types/socket.io-client@^1.4.32":
+  version "1.4.32"
+  resolved "https://registry.yarnpkg.com/@types/socket.io-client/-/socket.io-client-1.4.32.tgz#988a65a0386c274b1c22a55377fab6a30789ac14"
+
 "@webassemblyjs/ast@1.4.3":
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.4.3.tgz#3b3f6fced944d8660273347533e6d4d315b5934a"
@@ -583,6 +587,10 @@ arraybuffer.slice@0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/arraybuffer.slice/-/arraybuffer.slice-0.0.6.tgz#f33b2159f0532a3f3107a272c0ccfbd1ad2979ca"
 
+arraybuffer.slice@~0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/arraybuffer.slice/-/arraybuffer.slice-0.0.7.tgz#3bbc4275dd584cc1b10809b89d4e8b63a69e7675"
+
 arrify@^1.0.0, arrify@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
@@ -626,6 +634,10 @@ async-each@^1.0.0:
 async-foreach@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/async-foreach/-/async-foreach-0.1.3.tgz#36121f845c0578172de419a97dbeb1d16ec34542"
+
+async-limiter@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
 
 async@1.x, async@^1.4.0, async@^1.5.2:
   version "1.5.2"
@@ -1631,7 +1643,7 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-debug@*, debug@^3.1.0:
+debug@*, debug@^3.1.0, debug@~3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   dependencies:
@@ -1955,6 +1967,22 @@ engine.io-client@1.8.3:
     xmlhttprequest-ssl "1.5.3"
     yeast "0.1.2"
 
+engine.io-client@~3.2.0:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/engine.io-client/-/engine.io-client-3.2.1.tgz#6f54c0475de487158a1a7c77d10178708b6add36"
+  dependencies:
+    component-emitter "1.2.1"
+    component-inherit "0.0.3"
+    debug "~3.1.0"
+    engine.io-parser "~2.1.1"
+    has-cors "1.1.0"
+    indexof "0.0.1"
+    parseqs "0.0.5"
+    parseuri "0.0.5"
+    ws "~3.3.1"
+    xmlhttprequest-ssl "~1.5.4"
+    yeast "0.1.2"
+
 engine.io-parser@1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/engine.io-parser/-/engine.io-parser-1.3.2.tgz#937b079f0007d0893ec56d46cb220b8cb435220a"
@@ -1965,6 +1993,16 @@ engine.io-parser@1.3.2:
     blob "0.0.4"
     has-binary "0.1.7"
     wtf-8 "1.0.0"
+
+engine.io-parser@~2.1.1:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/engine.io-parser/-/engine.io-parser-2.1.2.tgz#4c0f4cff79aaeecbbdcfdea66a823c6085409196"
+  dependencies:
+    after "0.8.2"
+    arraybuffer.slice "~0.0.7"
+    base64-arraybuffer "0.1.5"
+    blob "0.0.4"
+    has-binary2 "~1.0.2"
 
 engine.io@1.8.3:
   version "1.8.3"
@@ -2733,6 +2771,12 @@ has-ansi@^2.0.0:
   dependencies:
     ansi-regex "^2.0.0"
 
+has-binary2@~1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/has-binary2/-/has-binary2-1.0.3.tgz#7776ac627f3ea77250cfc332dab7ddf5e4f5d11d"
+  dependencies:
+    isarray "2.0.1"
+
 has-binary@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/has-binary/-/has-binary-0.1.7.tgz#68e61eb16210c9545a0a5cce06a873912fe1e68c"
@@ -3308,6 +3352,10 @@ isarray@0.0.1:
 isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
+
+isarray@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/isarray/-/isarray-2.0.1.tgz#a37d94ed9cda2d59865c9f76fe596ee1f338741e"
 
 isbinaryfile@^3.0.0:
   version "3.0.3"
@@ -5601,6 +5649,25 @@ socket.io-client@1.7.3:
     socket.io-parser "2.3.1"
     to-array "0.1.4"
 
+socket.io-client@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/socket.io-client/-/socket.io-client-2.1.1.tgz#dcb38103436ab4578ddb026638ae2f21b623671f"
+  dependencies:
+    backo2 "1.0.2"
+    base64-arraybuffer "0.1.5"
+    component-bind "1.0.0"
+    component-emitter "1.2.1"
+    debug "~3.1.0"
+    engine.io-client "~3.2.0"
+    has-binary2 "~1.0.2"
+    has-cors "1.1.0"
+    indexof "0.0.1"
+    object-component "0.0.3"
+    parseqs "0.0.5"
+    parseuri "0.0.5"
+    socket.io-parser "~3.2.0"
+    to-array "0.1.4"
+
 socket.io-parser@2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/socket.io-parser/-/socket.io-parser-2.3.1.tgz#dd532025103ce429697326befd64005fcfe5b4a0"
@@ -5609,6 +5676,14 @@ socket.io-parser@2.3.1:
     debug "2.2.0"
     isarray "0.0.1"
     json3 "3.3.2"
+
+socket.io-parser@~3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/socket.io-parser/-/socket.io-parser-3.2.0.tgz#e7c6228b6aa1f814e6148aea325b51aa9499e077"
+  dependencies:
+    component-emitter "1.2.1"
+    debug "~3.1.0"
+    isarray "2.0.1"
 
 socket.io@1.7.3:
   version "1.7.3"
@@ -6275,6 +6350,10 @@ ultron@1.0.x:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.0.2.tgz#ace116ab557cd197386a4e88f4685378c8b2e4fa"
 
+ultron@~1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.1.1.tgz#9fe1536a10a664a65266a1e3ccf85fd36302bc9c"
+
 undefsafe@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/undefsafe/-/undefsafe-2.0.2.tgz#225f6b9e0337663e0d8e7cfd686fc2836ccace76"
@@ -6734,6 +6813,14 @@ ws@^1.0.1:
     options ">=0.0.5"
     ultron "1.0.x"
 
+ws@~3.3.1:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-3.3.3.tgz#f1cf84fe2d5e901ebce94efaece785f187a228f2"
+  dependencies:
+    async-limiter "~1.0.0"
+    safe-buffer "~5.1.0"
+    ultron "~1.1.0"
+
 wtf-8@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/wtf-8/-/wtf-8-1.0.0.tgz#392d8ba2d0f1c34d1ee2d630f15d0efb68e1048a"
@@ -6767,6 +6854,10 @@ xmlbuilder@~9.0.1:
 xmlhttprequest-ssl@1.5.3:
   version "1.5.3"
   resolved "https://registry.yarnpkg.com/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.5.3.tgz#185a888c04eca46c3e4070d99f7b49de3528992d"
+
+xmlhttprequest-ssl@~1.5.4:
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.5.5.tgz#c2876b06168aadc40e57d97e81191ac8f4398b3e"
 
 xregexp@4.0.0:
   version "4.0.0"
