@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate, state } from '@angular/animations';
 
-import { NotificationService } from 'turbo-notify-popup';
-
 import { HomeService } from '../../core/services/home.service';
 
 import * as webNotification from 'simple-web-notification';
@@ -28,21 +26,20 @@ import * as webNotification from 'simple-web-notification';
     )
   ],
   templateUrl: './home-booking.component.html',
-  styleUrls: ['./home-booking.component.scss'],
-  providers: [NotificationService]
+  styleUrls: ['./home-booking.component.scss']
 })
 
 export class HomeBookingComponent implements OnInit {
 
-  public  nameOfTheBooking: String;
+  public nameOfTheBooking: String;
   public nameChosenForBooking: String;
-  
+  public notifyMessage: String;
+
   private availabilityNotificationEnabled: Boolean = false;
   private availabilityNotificationInterval: any;
   private availabilityNotificationMessage: String;
 
   constructor(
-    private notify: NotificationService,
     private homeService: HomeService
   ) {
 
@@ -83,7 +80,11 @@ export class HomeBookingComponent implements OnInit {
 
   enablesAvailabilityNotification(message: String, notifyMessage: String) {
     if (notifyMessage) {
-      this.notify.show(notifyMessage.toString(), { position: 'bottom', duration: '5000', type: 'default' });
+      this.notifyMessage = notifyMessage;
+      document.getElementsByClassName('smr-notification')[0].classList.add('smr-notification--active');
+      setTimeout( () => {
+        document.getElementsByClassName('smr-notification')[0].classList.remove('smr-notification--active');
+      }, 5000);
     }
 
     if (!this.availabilityNotificationEnabled) {
@@ -96,13 +97,13 @@ export class HomeBookingComponent implements OnInit {
     webNotification.showNotification('SmarTo', {
       body: this.availabilityNotificationMessage,
       icon: 'assets/images/favicon/favicon.ico',
-      autoClose: 4000 // auto close the notification after 4 seconds (you can manually close it via hide function)
+      autoClose: 4000
     }, function onShow(error, hide) {
       if (error) {
         window.alert('Unable to show notification: ' + error.message);
       } else {
         setTimeout(function hideNotification() {
-          hide(); // manually close the notification (you can skip this if you use the autoClose option)
+          hide();
         }, 5000);
       }
     });

@@ -288,3 +288,23 @@
 		transform: translate3d(0, 0em, 0);
 	}
 }
+
+.smr-notification {
+	z-index: -1;
+	width: 100%;
+	padding: 20px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background-color: #0d160b;
+	color: #ffffff;
+	font-size: 14px;
+	text-align: center;
+	opacity: 0;
+	transition: all 1s ease-in-out;
+
+	&--active {
+		z-index: 110;
+		opacity: 1;
+	}
+}

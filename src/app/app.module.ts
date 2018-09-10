@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { TurboNotifyPopup } from 'turbo-notify-popup';
-
 import { LayoutPagesComponent } from './shared/layouts/layout-pages.component';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +23,6 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    TurboNotifyPopup,
     AppRoutingModule,
     CoreModule,
     SharedModule

@@ -28,7 +28,6 @@
     "rxjs": "^6.0.0",
     "simple-web-notification": "^1.0.30",
     "socket.io-client": "^2.1.1",
-    "turbo-notify-popup": "^5.0.1",
     "web-animations-js": "^2.3.1",
     "zone.js": "~0.8.26"
   },
