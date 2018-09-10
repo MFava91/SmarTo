@@ -36,23 +36,26 @@ export class HomeStatusComponent implements OnInit {
         this.status = status;
         this.homeService.statusChange(status.lightSensor.value);
         if (status.lightSensor.value === 0) {
-          // document.getElementById('#light_icon').style.fill = '#FFD166';
+          document.getElementById('light-icon').style.fill = '#FFD166';
           if (!this.lightTimer.timerStarted) {
             this.lightTimer.timerStarted = true;
             this.lightTimer.time = status.lightSensor.timeOn;
           }
 
         } else {
+          document.getElementById('light-icon').style.fill = '#363732';
           // $('#light_icon').css('fill', '#363732');
           this.lightTimer.timerStarted = false;
           this.lightTimer.time = 0;
         }
 
         if (status.motionSensor.value === 1) {
+          document.getElementById('motion-icon').style.fill = '#EF476F';
           // $('#motion_icon').css('fill', '#EF476F');
           this.motionTimer.timerStarted = false;
           this.motionTimer.time = 0;
         } else {
+          document.getElementById('motion-icon').style.fill = '#363732';
           // $('#motion_icon').css('fill', '#363732');
           if (!this.motionTimer.timerStarted) {
             this.motionTimer.timerStarted = true;
