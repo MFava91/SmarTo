@@ -24,7 +24,7 @@ export class HomeService {
   constructor(
     private http: HttpClient,
   ) {
-    this.socket = socketio(environment.apiUrl + ':3333');
+    this.socket = socketio(environment.socketUrl);
   }
 
   enableNotification(messages: any): void {
